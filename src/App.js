@@ -3,19 +3,24 @@ import { StyleSheet, View, Text } from 'react-native';
 import ActionButton from 'react-native-action-button';
 
 import Notes from './components/Notes';
+import Create from './components/Create';
 
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
 
 class HomeScreen extends React.Component {
     render() {
+        const { navigate } = this.props.navigation;
         return (
             <View style={{ flex: 1, backgroundColor: '#f3f3f3' }}>
                 <View style={styles.wrapper}>
                     <Text style={styles.title}>Notes</Text>
                     <Notes />
                 </View>
-                <ActionButton buttonColor="blue" />
+                <ActionButton
+                    buttonColor="blue"
+                    onPress={() => { navigate('Create') }}
+                />
             </View>
         );
     }
@@ -41,6 +46,15 @@ const AppNavigator = createStackNavigator({
     Home: {
         screen: HomeScreen,
     },
-});
+    Create: {
+        screen: Create
+    }
+},
+    {
+        headerMode: 'none',
+        navigationOptions: {
+            headerVisible: false,
+        }
+    });
 
 export default createAppContainer(AppNavigator);
