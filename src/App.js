@@ -1,9 +1,27 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { StyleSheet, View, Text } from 'react-native';
+import ActionButton from 'react-native-action-button';
 
-import Notes from './components/Notes'
+import Notes from './components/Notes';
 
-const styles = {
+import { createAppContainer } from 'react-navigation';
+import { createStackNavigator } from 'react-navigation-stack';
+
+class HomeScreen extends React.Component {
+    render() {
+        return (
+            <View style={{ flex: 1, backgroundColor: '#f3f3f3' }}>
+                <View style={styles.wrapper}>
+                    <Text style={styles.title}>Notes</Text>
+                    <Notes />
+                </View>
+                <ActionButton buttonColor="blue" />
+            </View>
+        );
+    }
+}
+
+const styles = StyleSheet.create({
     wrapper: {
         padding: 15
     },
@@ -12,15 +30,17 @@ const styles = {
         fontSize: 25,
         top: 5
     },
-}
+    actionButtonIcon: {
+        fontSize: 20,
+        height: 22,
+        color: 'white',
+    },
+});
 
-const App = () => {
-    return (
-        <View style={styles.wrapper}>
-            <Text style={styles.title}>Notes</Text>
-            <Notes />
-        </View>
-    );
-};
+const AppNavigator = createStackNavigator({
+    Home: {
+        screen: HomeScreen,
+    },
+});
 
-export default App;
+export default createAppContainer(AppNavigator);
