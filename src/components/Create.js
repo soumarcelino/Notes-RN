@@ -1,10 +1,14 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { View, Text, Button } from 'react-native';
 
-const Create = () => {
+const Create = ({ navigation: { navigate } }) => {
     return (
         <View>
             <Text>NOVA TELA</Text>
+            <Button
+                title="Voltar"
+                onPress={() => { navigate('Home') }}
+            />
         </View>
     );
 };
