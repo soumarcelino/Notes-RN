@@ -1,60 +1,23 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
-import ActionButton from 'react-native-action-button';
+import HomeScreen from './screens/Home';
 
-import Notes from './components/Notes';
-import Create from './components/Create';
+import { PersistGate } from 'redux-persist/lib/integration/react';
+import configureStore from './redux/configureStore';
 
-import { createAppContainer } from 'react-navigation';
-import { createStackNavigator } from 'react-navigation-stack';
+import { Provider } from 'react-redux';
 
-class HomeScreen extends React.Component {
+const { store, persistor } = configureStore();
+
+class App extends React.Component {
     render() {
-        const { navigate } = this.props.navigation;
         return (
-            <View style={{ flex: 1, backgroundColor: '#f3f3f3' }}>
-                <View style={styles.wrapper}>
-                    <Text style={styles.title}>Notes</Text>
-                    <Notes />
-                </View>
-                <ActionButton
-                    buttonColor="blue"
-                    onPress={() => { navigate('Create') }}
-                />
-            </View>
+            <Provider store={store}>
+                <PersistGate loading={null} persistor={persistor}>
+                    <HomeScreen />
+                </PersistGate>
+            </Provider>
         );
     }
 }
 
-const styles = StyleSheet.create({
-    wrapper: {
-        padding: 15
-    },
-    title: {
-        color: '#101010',
-        fontSize: 25,
-        top: 5
-    },
-    actionButtonIcon: {
-        fontSize: 20,
-        height: 22,
-        color: 'white',
-    },
-});
-
-const AppNavigator = createStackNavigator({
-    Home: {
-        screen: HomeScreen,
-    },
-    Create: {
-        screen: Create
-    }
-},
-    {
-        headerMode: 'none',
-        navigationOptions: {
-            headerVisible: false,
-        }
-    });
-
-export default createAppContainer(AppNavigator);
+export default App;

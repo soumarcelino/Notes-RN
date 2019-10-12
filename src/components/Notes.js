@@ -1,5 +1,7 @@
 import React from 'react';
-import { View, Text, ScrollView } from 'react-native';
+import { useSelector } from 'react-redux';
+import { View, Text } from 'react-native';
+import selectors from '../redux/selectors/notes'
 
 const styles = {
     content: {
@@ -11,13 +13,8 @@ const styles = {
     }
 }
 
-const notes = [
-    { text: 'Ola tudo bem?' },
-    { text: 'Essa nota é massa' },
-    { text: 'Muito rápido para criar' }
-];
-
 const Notes = () => {
+    const notes = useSelector(selectors.getNotes);
     return (
         <View style={styles.content}>
             {notes.map(note => <Text style={styles.noteTitle}>{note.text}</Text>)}
