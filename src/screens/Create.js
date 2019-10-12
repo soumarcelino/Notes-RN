@@ -20,23 +20,31 @@ const styles = {
     }
 }
 const Create = ({ navigation: { navigate } }) => {
-    const [note, setNote] = useState("");
+    const [title, setTitle] = useState("");
+    const [description, setDescription] = useState("");
+
     const dispatch = useDispatch();
 
     const confirmCreate = useCallback(() => {
         navigate('Home');
-        dispatch(actions.note.create(note));
-    }, [note, navigate]);
+        dispatch(actions.note.create({ title, description }));
+    }, [title, description]);
 
     return (
         <View style={styles.wrapper}>
             <Text style={styles.title}>Criação de notas</Text>
             <View style={styles.content}>
                 <TextInput
-                    value={note}
-                    onChangeText={setNote}
+                    value={title}
+                    onChangeText={setTitle}
                     style={styles.input}
-                    placeholder="Sua nota"
+                    placeholder="Title"
+                />
+                <TextInput
+                    value={description}
+                    onChangeText={setDescription}
+                    style={styles.input}
+                    placeholder="Description"
                 />
                 <Button
                     title="Criar nota"

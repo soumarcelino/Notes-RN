@@ -1,6 +1,8 @@
 import React from 'react';
-import { StyleSheet, View, Text } from 'react-native';
+import { StyleSheet, View } from 'react-native';
 import ActionButton from 'react-native-action-button';
+
+import Navbar from '../components/Navbar';
 
 import Notes from '../components/Notes';
 import CreateScreen from './Create';
@@ -14,11 +16,11 @@ class HomeScreen extends React.Component {
         return (
             <View style={{ flex: 1, backgroundColor: '#f3f3f3' }}>
                 <View style={styles.wrapper}>
-                    <Text style={styles.title}>Notes</Text>
+                    <Navbar title="My note" icon="checklist" />
                     <Notes />
                 </View>
                 <ActionButton
-                    buttonColor="blue"
+                    buttonColor="#464646"
                     onPress={() => { navigate('Create') }}
                 />
             </View>
@@ -31,7 +33,8 @@ const styles = StyleSheet.create({
         padding: 15
     },
     title: {
-        color: '#101010',
+        color: '#464646',
+        fontWeight: 'bold',
         fontSize: 25,
         top: 5
     },
@@ -40,6 +43,18 @@ const styles = StyleSheet.create({
         height: 22,
         color: 'white',
     },
+    nav: {
+        paddingLeft: 8,
+        flex: 1,
+        flexDirection: 'row',
+        alignItems: 'center',
+        justifyContent: 'flex-start',
+        marginBottom: 15
+    },
+    navIcon: {
+        paddingRight: 5,
+        top: 5
+    }
 });
 
 const AppNavigator = createStackNavigator({
