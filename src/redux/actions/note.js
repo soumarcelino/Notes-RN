@@ -1,5 +1,5 @@
 import CUD from './base/CUD';
 
-const MODULE = 'CARD_CREDIT';
+const MODULE = 'notes';
 
 export default CUD(MODULE);

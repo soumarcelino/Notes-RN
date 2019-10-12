@@ -1,5 +1,5 @@
-import bank from './bank';
+import note from './note';
 
 export default {
-	bank
+	note
 };

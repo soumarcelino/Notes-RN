@@ -1,5 +1,5 @@
 import { List } from 'immutable';
-import actions from '../actions/bank';
+import actions from '../actions/note';
 import uuidv1 from 'uuid/v1';
 
 const initialState = List([{

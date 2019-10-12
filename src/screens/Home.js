@@ -3,7 +3,7 @@ import { StyleSheet, View, Text } from 'react-native';
 import ActionButton from 'react-native-action-button';
 
 import Notes from '../components/Notes';
-import Create from '../components/Create';
+import CreateScreen from './Create';
 
 import { createAppContainer } from 'react-navigation';
 import { createStackNavigator } from 'react-navigation-stack';
@@ -47,7 +47,7 @@ const AppNavigator = createStackNavigator({
         screen: HomeScreen,
     },
     Create: {
-        screen: Create
+        screen: CreateScreen
     }
 },
     {
