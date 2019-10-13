@@ -1,5 +1,7 @@
 import React from 'react';
-import { View, Text } from 'react-native';
+import { TouchableNativeFeedback, Text } from 'react-native';
+
+import Ripple from 'react-native-material-ripple';
 
 const styles = {
     title: {
@@ -8,17 +10,17 @@ const styles = {
     description: {
         fontSize: 14
     },
-    item: {
-        marginBottom: 15
+    ripple: {
+        padding: 15
     }
 }
 
 const Card = ({ title, description }) => {
     return (
-        <View style={styles.item}>
+        <Ripple style={styles.ripple}>
             <Text style={styles.title}>{title}</Text>
             <Text style={styles.description}>{description}</Text>
-        </View>
+        </Ripple>
     );
 };
 

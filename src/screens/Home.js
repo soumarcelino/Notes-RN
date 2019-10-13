@@ -16,7 +16,7 @@ class HomeScreen extends React.Component {
         return (
             <View style={{ flex: 1, backgroundColor: '#f3f3f3' }}>
                 <View style={styles.wrapper}>
-                    <Navbar title="My note" icon="checklist" />
+                    <Navbar title="My notes" icon="checklist" />
                     <Notes />
                 </View>
                 <ActionButton
