@@ -1,6 +1,6 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import { View } from 'react-native';
+import { View, Alert } from 'react-native';
 import selectors from '../../redux/selectors/notes';
 import Card from './Card';
 
@@ -11,11 +11,11 @@ const styles = {
     }
 }
 
-const Notes = () => {
+const Notes = ({ onPress }) => {
     const notes = useSelector(selectors.getNotes);
     return (
         <View style={styles.content}>
-            {notes.map(({ id, title, description }) => <Card key={id} title={title} description={description} />)}
+            {notes.map(note => <Card onPress={onPress} key={note.id} note={note} />)}
         </View>
     );
 };

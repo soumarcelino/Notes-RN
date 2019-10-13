@@ -13,12 +13,12 @@ const styles = {
     }
 }
 
-const Card = ({ title, description }) => {
+const Card = ({ note, onPress }) => {
     return (
-        <TouchableNativeFeedback>
+        <TouchableNativeFeedback onPress={() => onPress && onPress(note)}>
             <View style={styles.ripple}>
-                <Text style={styles.title}>{title}</Text>
-                <Text style={styles.description}>{description}</Text>
+                <Text style={styles.title}>{note.title}</Text>
+                <Text style={styles.description}>{note.description}</Text>
             </View>
         </TouchableNativeFeedback>
     );
