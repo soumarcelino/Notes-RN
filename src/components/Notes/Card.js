@@ -1,6 +1,5 @@
 import React from 'react';
-import { TouchableNativeFeedback, Text } from 'react-native';
-
+import { Text } from 'react-native';
 import Ripple from 'react-native-material-ripple';
 
 const styles = {
